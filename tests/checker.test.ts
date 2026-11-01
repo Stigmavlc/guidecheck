@@ -11,6 +11,7 @@ describe('references',()=>{
  it('supports setext headings and formatted title anchors',()=>{expect(checkSet([file('a.md','A **bold** title\n=====\n[there](#a-bold-title)')],empty).findings).toEqual([]);});
  it('points to the line containing each reference in a multiline paragraph',()=>{const r=checkSet([file('a.md','# 1. Start\n\nRead the guide.\nSee section 7.\nThen section 8.')],empty);expect(r.findings.map(f=>({line:f.line,excerpt:f.excerpt}))).toEqual([{line:4,excerpt:'See section 7.'},{line:5,excerpt:'Then section 8.'}]);});
  it('does not turn an unchecked image into a missing document error',()=>{expect(checkSet([file('a.md','# Guide\n![Diagram](images/diagram.png)')],empty).findings).toEqual([]);});
+ it('warns about uncheckable download links without declaring the asset missing',()=>{const r=checkSet([file('a.md','[Download](manual.pdf)')],empty);expect(r.findings[0]).toMatchObject({rule:'unchecked-local-target',severity:'warning'});});
  it('does not reinterpret rooted links as nested relative links',()=>{const r=checkSet([file('en/a.md','[root](/b.md)'),file('en/b.md','# B')],empty);expect(r.findings[0].rule).toBe('invalid-local-link');});
 });
 describe('paired documents',()=>{

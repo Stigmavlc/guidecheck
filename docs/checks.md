@@ -16,6 +16,7 @@ GuideCheck compares explicit structure. Someone who understands both languages s
 | missing-file | Error | A relative link points outside the loaded Markdown files. |
 | missing-anchor | Error | A link names an absent GitHub style heading anchor. |
 | invalid-local-link | Error | A local link has invalid encoding, a rooted path or escapes the set. |
+| unchecked-local-target | Warning | A relative link names a target other than a Markdown document. |
 | unsupported-link | Warning | A link uses a scheme outside the local check. |
 
 Section count and positional structure warnings are prompts for review. An extra introduction or a deliberate reorganisation may be appropriate. Map the headings you actually require rather than assuming equal counts mean equal coverage.
@@ -32,7 +33,7 @@ Glossary rules match text nodes with Unicode word boundaries. They skip code spa
 
 Links are resolved within the loaded Markdown set, relative to the source document. Heading anchors follow `github-slugger`, including Unicode and repeated headings. Standard defined Markdown reference links are supported. A missing named reference definition stays literal Markdown text in the parser and is not diagnosed.
 
-Images, raw HTML links, explicit HTML anchor IDs, generated site routes, MDX, external URL availability and non-Markdown assets are outside the check. Load every linked Markdown document you want checked; an omitted file and an actually absent file look the same to this tool. Rooted paths are rejected because no website root is assumed.
+Images, raw HTML links, explicit HTML anchor IDs, generated site routes, MDX, external URL availability and non-Markdown assets are outside the check. An ordinary link to a non-Markdown target produces an unchecked target warning, without claiming that an asset is missing. Load every linked Markdown document you want checked; an omitted file and an actually absent file look the same to this tool. Rooted paths are rejected because no website root is assumed.
 
 ## Reports
 
