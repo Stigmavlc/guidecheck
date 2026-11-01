@@ -1,0 +1,35 @@
+{
+  "pairs": [
+    {
+      "en": "help.en.md",
+      "es": "help.es.md",
+      "sections": [
+        {
+          "en": "1. Prepare your account",
+          "es": "1. Preparar la cuenta"
+        },
+        {
+          "en": "2. Create a booking",
+          "es": "2. Crear una reserva"
+        },
+        {
+          "en": "3. Confirm the details",
+          "es": "3. Confirmar los datos"
+        },
+        {
+          "en": "4. Change a booking",
+          "es": "4. Cambiar una reserva"
+        }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "language": "es",
+      "preferred": "cola de trabajos",
+      "avoid": [
+        "línea de trabajos"
+      ]
+    }
+  ]
+}
