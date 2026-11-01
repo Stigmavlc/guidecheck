@@ -4,6 +4,8 @@ A local workspace for checking the structure of paired English and Spanish Markd
 
 A translated guide can have the right number of headings and still miss the booking instructions. GuideCheck lets you name the sections that must exist in both editions, then checks their order, numbering, terminology and references. Each finding opens the original source at its line number.
 
+![A bilingual guide with its source line and review notes](docs/screenshots/desktop.png)
+
 [Open the workspace](https://stigmavlc.github.io/guidecheck/) · [Checks and limits](docs/checks.md) · [How it works](docs/architecture.md)
 
 ## Try the example
