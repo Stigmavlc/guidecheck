@@ -12,9 +12,10 @@ async function main(){
  const documents:DocumentFile[]=[];let total=0;
  async function walk(folder:string,depth=0){if(depth>15)throw Error('Document nesting exceeds 15 folders.');for(const entry of (await readdir(folder,{withFileTypes:true})).sort((a,b)=>a.name.localeCompare(b.name))){if(entry.name.startsWith('.')||entry.name==='node_modules')continue;const path=join(folder,entry.name);if(entry.isSymbolicLink())throw Error(`Symbolic links are not followed: ${relative(root,path)}`);if(entry.isDirectory())await walk(path,depth+1);else if(entry.isFile()&&/\.md$/i.test(entry.name)){const size=(await stat(path)).size;total+=size;if(size>200000||total>1000000||documents.length>=100)throw Error('Input exceeds 100 documents, 200 KB per document or 1 MB total.');const data=await readFile(path);let content:string;try{content=new TextDecoder('utf-8',{fatal:true}).decode(data);}catch{throw Error(`${entry.name} is not valid UTF-8.`);}documents.push({path:relative(root,path).replaceAll('\\','/'),content});}}}
  await walk(root);
+ if(configurationPath&&(await stat(resolve(configurationPath))).size>200000)throw Error('Configuration exceeds 200 KB.');
  const config=configurationPath?readConfiguration(await readFile(resolve(configurationPath),'utf8')):inferConfiguration(documents);
  const result=checkSet(documents,config);const report=format==='json'?JSON.stringify(result,null,2)+'\n':markdownReport(result)+'\n';
- if(output)await writeFile(resolve(output),report);else process.stdout.write(report);
+ if(output)await writeFile(resolve(output),report,{flag:'wx'});else process.stdout.write(report);
  process.exitCode=result.findings.some(f=>f.severity==='error')?1:0;
 }
 main().catch(error=>{console.error(error instanceof Error?error.message:String(error));process.exitCode=2;});
