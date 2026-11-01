@@ -47,11 +47,11 @@ npm run check -- path/to/guides --config guidecheck.json --output report.md
 
 The first example returns exit code 0. The broken example returns 1 because it contains errors. Use a new output filename: the command refuses to overwrite a document, existing report or symbolic link.
 
-| Exit code | Meaning |
-| --- | --- |
-| 0 | Checks finished with no errors. Warnings may still need review. |
-| 1 | Checks finished and found at least one error. |
-| 2 | Invalid input, configuration or output destination. |
+| Exit code | Meaning                                                         |
+| --------- | --------------------------------------------------------------- |
+| 0         | Checks finished with no errors. Warnings may still need review. |
+| 1         | Checks finished and found at least one error.                   |
+| 2         | Invalid input, configuration or output destination.             |
 
 Without `--config`, the command infers language pairs from filenames. It cannot infer the translation of a heading. Run `npm run check -- --help` for the options.
 
@@ -59,19 +59,23 @@ Without `--config`, the command infers language pairs from filenames. It cannot 
 
 ```json
 {
-  "pairs": [{
-    "en": "help.en.md",
-    "es": "help.es.md",
-    "sections": [
-      {"en": "1. Prepare your account", "es": "1. Preparar la cuenta"},
-      {"en": "2. Create a booking", "es": "2. Crear una reserva"}
-    ]
-  }],
-  "glossary": [{
-    "language": "es",
-    "preferred": "cola de trabajos",
-    "avoid": ["línea de trabajos"]
-  }]
+  "pairs": [
+    {
+      "en": "help.en.md",
+      "es": "help.es.md",
+      "sections": [
+        { "en": "1. Prepare your account", "es": "1. Preparar la cuenta" },
+        { "en": "2. Create a booking", "es": "2. Crear una reserva" }
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "language": "es",
+      "preferred": "cola de trabajos",
+      "avoid": ["línea de trabajos"]
+    }
+  ]
 }
 ```
 

@@ -2,22 +2,22 @@
 
 GuideCheck compares explicit structure. Someone who understands both languages still needs to read the guides.
 
-| Rule | Level | What it reports |
-| --- | --- | --- |
-| missing-counterpart | Error | A configured English or Spanish document is absent. |
-| mapped-section | Error | A named heading is absent or occurs more than once in its edition. |
-| section-order | Warning | Mapped headings appear in a different order from the configuration. |
-| section-count | Warning | The editions have different numbers of headings. |
-| section-structure | Warning | Corresponding heading positions differ in level or section number. |
-| duplicate-number | Error | A numbered heading repeats a number in the same document. |
-| heading-level | Warning | A heading jumps more than one level from the preceding heading. |
-| section-reference | Error | English or Spanish prose names a section number absent from that document. |
-| glossary | Warning | Paired prose contains a configured avoided term. |
-| missing-file | Error | A relative link points outside the loaded Markdown files. |
-| missing-anchor | Error | A link names an absent GitHub style heading anchor. |
-| invalid-local-link | Error | A local link has invalid encoding, a rooted path or escapes the set. |
-| unchecked-local-target | Warning | A relative link names a target other than a Markdown document. |
-| unsupported-link | Warning | A link uses a scheme outside the local check. |
+| Rule                   | Level   | What it reports                                                            |
+| ---------------------- | ------- | -------------------------------------------------------------------------- |
+| missing-counterpart    | Error   | A configured English or Spanish document is absent.                        |
+| mapped-section         | Error   | A named heading is absent or occurs more than once in its edition.         |
+| section-order          | Warning | Mapped headings appear in a different order from the configuration.        |
+| section-count          | Warning | The editions have different numbers of headings.                           |
+| section-structure      | Warning | Corresponding heading positions differ in level or section number.         |
+| duplicate-number       | Error   | A numbered heading repeats a number in the same document.                  |
+| heading-level          | Warning | A heading jumps more than one level from the preceding heading.            |
+| section-reference      | Error   | English or Spanish prose names a section number absent from that document. |
+| glossary               | Warning | Paired prose contains a configured avoided term.                           |
+| missing-file           | Error   | A relative link points outside the loaded Markdown files.                  |
+| missing-anchor         | Error   | A link names an absent GitHub style heading anchor.                        |
+| invalid-local-link     | Error   | A local link has invalid encoding, a rooted path or escapes the set.       |
+| unchecked-local-target | Warning | A relative link names a target other than a Markdown document.             |
+| unsupported-link       | Warning | A link uses a scheme outside the local check.                              |
 
 Section count and positional structure warnings are prompts for review. An extra introduction or a deliberate reorganisation may be appropriate. Map the headings you actually require rather than assuming equal counts mean equal coverage.
 
